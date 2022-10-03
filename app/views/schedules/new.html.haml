@@ -1,0 +1,8 @@
+= form_for @schedule do |f|
+  = f.label :availability
+  = f.date_field :availability
+  = f.label :location
+  = f.text_field :location
+  = f.label :gender
+  = f.text_field :gender
+  = f.submit

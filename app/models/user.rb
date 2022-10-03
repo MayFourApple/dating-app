@@ -5,6 +5,8 @@ class User < ApplicationRecord
   #        :recoverable, :rememberable, :validatable,
   devise :omniauthable, omniauth_providers: %i[linkedin]
 
+  has_many :schedules
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session['devise.linkedin_data'] && sesion['devise.linkedin_data']['extra']['raw_info']
@@ -20,5 +22,9 @@ class User < ApplicationRecord
       user.last_name = auth.info.last_name
       user.picture_url = auth.info.picture_url
     end
+  end
+
+  def matches
+    
   end
 end

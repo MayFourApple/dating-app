@@ -1,0 +1,11 @@
+%table
+  %thead
+    %th Availability
+    %th Location
+    %th Gender-Preference
+  %tbody
+    - @schedules.each do |schedule|
+      %tr
+        %td= schedule.availability
+        %td= schedule.location
+        %td= schedule.gender

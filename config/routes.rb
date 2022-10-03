@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :schedules
+
   # Defines the root path route ("/")
   root "homepage#index"
   get "dashboard", to: "dashboard#index"
