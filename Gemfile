@@ -49,6 +49,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "devise"
+gem "bootstrap"
 gem "oauth2", "1.4.10"
 gem "omniauth"
 gem "omniauth-rails_csrf_protection"
