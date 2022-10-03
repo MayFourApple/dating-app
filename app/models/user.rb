@@ -25,6 +25,10 @@ class User < ApplicationRecord
   end
 
   def matches
-    
+    Schedule
+      .order(:availability, :location)
+      .where.not(user: self)
+      .where(gender: gender)
+      .where('EXISTS(SELECT * FROM schedules s1 WHERE s1.availability = schedules.availability AND s1.location = schedules.location AND s1.user_id <> schedules.user_id)')
   end
 end

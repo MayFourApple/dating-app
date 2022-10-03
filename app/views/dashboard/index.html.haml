@@ -1,2 +1,9 @@
 = link_to 'New Schedule', new_schedule_path
 = link_to 'Schedules', schedules_path
+
+- @matches.each do |group, schedules|
+  %h2= group
+  - schedules.each do |schedule|
+    %div
+      %p= image_tag(schedule.user.picture_url)
+      %p= schedule.user.first_name
