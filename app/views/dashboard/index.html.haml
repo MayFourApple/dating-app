@@ -1,9 +1,21 @@
+%nav.navbar.navbar-light.bg-light
+  .container-fluid
+    %a.navbar-brand Profile
+    %ul.nav.justify-content-center
+      %li.nav-item
+        %a.nav-link.active{"aria-current" => "page", href: "#"} Matches
+      %li.nav-item
+        %a.nav-link{href: "#"} Message
+      %li.nav-item
+        %a.nav-link{href: "#"} Notification
+
 = link_to 'New Schedule', new_schedule_path
 = link_to 'Schedules', schedules_path
+
 
 - @matches.each do |group, schedules|
   %h2= group
   - schedules.each do |schedule|
-    %div
-      %p= image_tag(schedule.user.picture_url)
-      %p= schedule.user.first_name
+    .text-center
+      .img= image_tag(schedule.user.picture_url)
+      .fs-3= schedule.user.first_name
