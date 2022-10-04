@@ -1,1 +1,12 @@
-= button_to 'Sign-In via LinkedIn', user_linkedin_omniauth_authorize_path, data: { turbo: false }, method: :post
+#main-container
+  .container.mx-auto.col-md-12.text-center{style: "width: 450px;"}
+    .flex-container
+      .left.column
+        =image_tag "dating-logo.jpeg"
+      .right.column
+        %h2.text-danger.py-3 Dating
+    %h4 Secure Dating for Professional Singles.
+    %h4 Build Connections & Find Love!
+    .mt-5
+      = button_to 'Sign-In via LinkedIn', user_linkedin_omniauth_authorize_path, data: { turbo: false }, method: :post,
+      class: 'btn btn-md btn-primary'
