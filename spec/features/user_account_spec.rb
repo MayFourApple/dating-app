@@ -36,7 +36,5 @@ RSpec.feature 'User Account', type: :feature do
     click_on 'Update User'
 
     expect(page).to have_text('Profile')
-
-    
   end
 end

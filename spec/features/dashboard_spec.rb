@@ -14,4 +14,18 @@ RSpec.feature 'Dashboard', type: :feature do
     expect(page).to have_text('2022-10-10 Laguna')
   end
 
+  scenario 'user create new schedule' do
+    user = User.create(email: 'user@email.com')
+
+    sign_in user
+    visit '/dashboard'
+    click_on 'New Schedule'
+    fill_in 'Availability', with: '10/10/2022'
+    fill_in 'Location', with: 'Location'
+    fill_in 'Gender', with: 'Gender'
+    click_on 'Create Schedule'
+
+    expect(Schedule.count).to eq(1)
+    expect(page).to have_text('Profile')
+  end
 end
