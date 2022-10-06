@@ -16,13 +16,27 @@ RSpec.feature 'User Account', type: :feature do
     expect(page).to have_text('Dating')
   end
 
-  # scenario 'user can enter their location upon signin' do
-  #   user = User.create(email: "example@email.com")
+  scenario 'user can enter their location upon signin' do
+    user = User.create(email: "example@email.com")
     
-  #   visit 'user/location/edit'
-  #   fill_in 'user_location', with: 'location'
-  #   click_on 'Update User'
+    sign_in user
+    visit '/user/location/edit'
+    fill_in 'Location', with: 'location' 
+    click_on 'Update User'
 
-  #   expect(page).to have_text('Gender')
-  # end
+    expect(page).to have_text('Gender')
+  end
+
+  scenario 'user can enter their gender upon signin' do
+    user = User.create(email: "example@email.com")
+    
+    sign_in user
+    visit '/user/gender/edit'
+    fill_in 'Gender', with: 'gender' 
+    click_on 'Update User'
+
+    expect(page).to have_text('Profile')
+
+    
+  end
 end
