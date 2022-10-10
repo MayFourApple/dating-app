@@ -1,0 +1,20 @@
+.navigation
+  %ul
+    %li
+      = link_to 'Messages', conversation_path(@conversations.first)
+      %span.badge.text-bg-secondary= current_user.unread
+.conversations
+  %ul
+    - @conversations.each do |conversation|
+      %li{class: conversation == @conversation ? 'active' : ''}
+        = link_to conversation.name(current_user), conversation_path(conversation)
+.messages
+  %ul
+    - @conversation.messages.each do |message|
+      %li
+        %p= message.content
+        %p= message.created_at.to_formatted_s(:long)
+  %div
+    = form_for [@conversation, @message] do |f|
+      = f.text_field :content
+      = f.submit

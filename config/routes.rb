@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   end
 
   resources :schedules
+  resources :conversations do
+    resources :messages
+  end
 
   # Defines the root path route ("/")
   root "homepage#index"

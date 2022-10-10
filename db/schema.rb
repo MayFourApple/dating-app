@@ -10,9 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_03_081121) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_10_061124) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "user_1_id"
+    t.bigint "user_2_id"
+    t.integer "unread_for_user_1"
+    t.integer "unread_for_user_2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_1_id"], name: "index_conversations_on_user_1_id"
+    t.index ["user_2_id"], name: "index_conversations_on_user_2_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "conversation_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_messages_on_author_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+  end
 
   create_table "schedules", force: :cascade do |t|
     t.bigint "user_id"

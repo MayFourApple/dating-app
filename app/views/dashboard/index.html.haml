@@ -20,5 +20,5 @@
       .img= image_tag(schedule.user.picture_url)
       .fs-3= schedule.user.first_name
       %div
-        .btn.btn-secondary{type: "button"} Invite
+        = link_to 'Send Message', new_conversation_path(recipient_id: schedule.user.id), class: 'btn btn-secondary'
         .btn.btn-secondary{type: "button"} Ignore

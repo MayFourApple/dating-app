@@ -31,4 +31,9 @@ class User < ApplicationRecord
       .where(gender: gender)
       .where('EXISTS(SELECT * FROM schedules s1 WHERE s1.availability = schedules.availability AND s1.location = schedules.location AND s1.user_id <> schedules.user_id)')
   end
+
+  def unread
+    Conversation.where(user_1: self).pluck(:unread_for_user_1).compact.sum +
+      Conversation.where(user_2: self).pluck(:unread_for_user_2).compact.sum
+  end
 end
