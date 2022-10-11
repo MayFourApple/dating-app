@@ -15,6 +15,11 @@
  */
  @import "bootstrap";
 
+ * {
+  margin: 0;
+  padding: 0;
+ }
+
  #main-container {
   margin-top: 10%;
  }
