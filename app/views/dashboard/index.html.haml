@@ -1,6 +1,7 @@
 %nav
   .container
-    %ul.nav
+    %a.navbar-brand.fw-bold.fs-4 Profile
+    %ul.nav.justify-content-center
       %li.nav-item
         %a=link_to 'Match', dashboard_path, class: 'text-decoration-none mx-2'
       %li.nav-item
@@ -8,7 +9,8 @@
       %li.nav-item
         %a= link_to 'New Schedule', new_schedule_path, class: 'text-decoration-none mx-2'
       %li.nav-item
-        %a= link_to 'Schedules', schedules_path, class: 'text-decoration-none'
+        %a= link_to 'Schedules', schedules_path, class: 'text-decoration-none'    
+        %a= link_to "Logout", logout_path, method: :delete, class: 'text-decoration-none'
     
 - @matches.each do |group, schedules|
   .text-center.fs-2= group

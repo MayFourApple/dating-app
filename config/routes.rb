@@ -14,7 +14,14 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  get "sessions/destroy"
+
+  controller :sessions do
+  get 'logout' => :destroy  
+  end
+
   # Defines the root path route ("/")
   root "homepage#index"
   get "dashboard", to: "dashboard#index"
+
 end
