@@ -28,4 +28,5 @@ RSpec.feature 'Dashboard', type: :feature do
     expect(Schedule.count).to eq(1)
     expect(page).to have_text('Profile')
   end
+  scenario 'user create new schedule without'
 end
