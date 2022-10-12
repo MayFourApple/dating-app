@@ -3,19 +3,14 @@
     %a.navbar-brand.fw-bold.fs-4 Profile
     %ul.nav.justify-content-center
       %li.nav-item
-        %a=link_to 'Match', dashboard_path, class: 'text-decoration-none mx-2'
+        %a=link_to 'Matches', dashboard_path, class: 'text-decoration-none mx-2'
       %li.nav-item
-        %a=link_to 'Messages', conversations_path, class: 'text-decoration-none mx-2'
+        %a= link_to 'Messages', conversation_path(@conversations.first)
+        %span.badge.text-bg-secondary= current_user.unread
       %li.nav-item
         %a= link_to 'New Schedule', new_schedule_path, class: 'text-decoration-none mx-2'
       %li.nav-item
-        %a= link_to 'Schedules', schedules_path, class: 'text-decoration-none'    
-        %a= link_to "Logout", logout_path, method: :delete, class: 'text-decoration-none'
-.navigation
-  %ul
-    %li
-      = link_to 'Messages', conversation_path(@conversations.first)
-      %span.badge.text-bg-secondary= current_user.unread
+        %a= link_to 'Schedules', schedules_path, class: 'text-decoration-none'
 .conversations
   %ul
     - @conversations.each do |conversation|
