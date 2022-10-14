@@ -28,5 +28,15 @@ RSpec.feature 'Dashboard', type: :feature do
     expect(Schedule.count).to eq(1)
     expect(page).to have_text('Profile')
   end
-  scenario 'user create new schedule without'
+
+  scenario 'user view messages page' do 
+    user = User.create(email: 'user@email.com')
+
+    sign_in user
+    visit '/dashboard'
+    click_on 'Messages'
+    visit '/conversations'
+
+    expect(page).to have_text('Messaging')
+  end 
 end

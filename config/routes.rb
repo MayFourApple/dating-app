@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  resources :matches
+
   get "sessions/destroy"
 
   controller :sessions do

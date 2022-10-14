@@ -1,0 +1,2 @@
+class RemovedMatch < ApplicationRecord
+end

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :validatable,
   devise :omniauthable, omniauth_providers: %i[linkedin]
-
+  
   has_many :schedules
 
   def self.new_with_session(params, session)
@@ -26,10 +26,15 @@ class User < ApplicationRecord
 
   def matches
     Schedule
-      .order(:availability, :location)
-      .where.not(user: self)
-      .where(gender: gender)
-      .where('EXISTS(SELECT * FROM schedules s1 WHERE s1.availability = schedules.availability AND s1.location = schedules.location AND s1.user_id <> schedules.user_id)')
+      .from('schedules AS other_schedules')
+      .joins('INNER JOIN schedules self_schedules ON self_schedules.availability = other_schedules.availability AND self_schedules.location = other_schedules.location AND self_schedules.user_id <> other_schedules.user_id')
+      .order('other_schedules.availability, other_schedules.location')
+      .where.not('other_schedules.user_id': id)
+      .where('other_schedules.gender': gender)
+      .where('other_schedules.availability >= ?', Date.today)
+      .where('NOT EXISTS(SELECT 1 FROM removed_matches WHERE removed_matches.schedule_1_id = self_schedules.id AND removed_matches.schedule_2_id = other_schedules.id)')
+      .where('NOT EXISTS(SELECT 1 FROM removed_matches WHERE removed_matches.schedule_1_id = other_schedules.id AND removed_matches.schedule_2_id = self_schedules.id)')
+      .select('other_schedules.*, self_schedules.id AS self_schedule_id')
   end
 
   def unread

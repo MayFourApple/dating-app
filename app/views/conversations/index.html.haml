@@ -12,6 +12,7 @@
       %li.nav-item
         %a= link_to 'Schedules', schedules_path, class: 'text-decoration-none'    
 .conversations
+  %H4.m-1 Messaging  
   %ul
     - @conversations.each do |conversation|
       %li{class: conversation == @conversation ? 'active' : ''}

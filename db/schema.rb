@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_10_061124) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_14_071102) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_061124) do
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_messages_on_author_id"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+  end
+
+  create_table "removed_matches", force: :cascade do |t|
+    t.bigint "schedule_1_id"
+    t.bigint "schedule_2_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_1_id"], name: "index_removed_matches_on_schedule_1_id"
+    t.index ["schedule_2_id"], name: "index_removed_matches_on_schedule_2_id"
   end
 
   create_table "schedules", force: :cascade do |t|

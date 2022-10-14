@@ -20,4 +20,4 @@
       .fs-3= schedule.user.first_name
       %div
         = link_to 'Send Message', new_conversation_path(recipient_id: schedule.user.id), class: 'btn btn-secondary'
-        .btn.btn-secondary{type: "button"} Ignore
+        = link_to 'Remove', match_path(schedule.id, self_schedule_id: schedule.self_schedule_id), class: 'btn btn-secondary', data: { turbo_method: :delete }
