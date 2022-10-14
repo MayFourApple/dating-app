@@ -10,6 +10,14 @@
         %a= link_to 'New Schedule', new_schedule_path, class: 'text-decoration-none mx-2'
       %li.nav-item
         %a= link_to 'Schedules', schedules_path, class: 'text-decoration-none'   
+
+- if @schedule.errors.any?
+  #error_explanation
+    %p #{pluralize(@schedule.errors.count, 'error')} prohibited this article from being saved:
+    %ul
+      - @schedule.errors.each do |error|
+        %li= error.full_message
+
 = form_for @schedule do |f|
   = f.label :availability
   = f.date_field :availability

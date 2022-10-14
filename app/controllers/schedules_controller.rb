@@ -14,7 +14,11 @@ class SchedulesController < ApplicationController
     @schedule = current_user.schedules.new
     @schedule.update(schedule_params)
 
-    redirect_to dashboard_path
+    if @schedule.valid?
+      redirect_to dashboard_path
+    else 
+      render :new, status: 422
+    end
   end
 
   private
