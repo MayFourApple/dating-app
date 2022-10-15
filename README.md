@@ -4,7 +4,7 @@
 ### Dating App
 
 ## Overview
-Build on Ruby on rails dating app that allows users to create an account with their LinkedIn credentials. The app was created for professional singles to find perfect matches and transparency for users. 
+Build in Ruby on rails dating app that allows users to create an account with their LinkedIn credentials. The app was created for professional singles to find perfect matches and transparency for users. 
 
 ## Features
 - A professional profile creator.
