@@ -13,6 +13,13 @@ Build on Ruby on rails dating app that allows users to create an account with th
 - Probability of finding your match.
 - Enable to chat only for matches.
 
+## Build With
+* Ruby On Rails
+* Sass-Bootstrap
+
+## Template
+* Haml
+
 ## Version
 * Ruby 3.1.2
 * Rails 7.0.4
@@ -27,6 +34,8 @@ $ rails s
 
 ## Running the test suite
 $rspec
+
+
 
 
 
