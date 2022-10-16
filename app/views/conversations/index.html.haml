@@ -5,7 +5,7 @@
       %li.nav-item
         %a=link_to 'Matches', dashboard_path, class: 'text-decoration-none mx-2'
       %li.nav-item
-        %a= link_to 'Messages', conversation_path(@conversations.first)
+        %a= link_to 'Messages', conversation_path(@conversations.first), class: 'text-decoration-none'
         %span.badge.text-bg-secondary= current_user.unread
       %li.nav-item
         %a= link_to 'New Schedule', new_schedule_path, class: 'text-decoration-none mx-2'
