@@ -15,7 +15,7 @@
 - @matches.each do |group, schedules|
   .text-center.fs-2= group
   - schedules.each do |schedule|
-    .text-center
+    .container.text-center.mb-5
       .img= image_tag(schedule.user.picture_url)
       .fs-3= schedule.user.first_name
       %div

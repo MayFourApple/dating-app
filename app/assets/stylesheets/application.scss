@@ -70,6 +70,11 @@ a {
     padding-top: 12px
   }
 
+  // a.navbar.img {
+  //   height: 1px;
+  //   width: 1px;
+  // }
+
   ul.nav {
     float: right;
     text-align: center;
@@ -80,5 +85,45 @@ a {
     padding: 14px 16px;
   }
  }
+
+ .conversations {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  // align-items: center;
+  // justify-content: center;
+  .sidebar {
+    background-color: #ffebee;
+    // align-items: center;
+    // justify-content: center;
+    text-align: center;
+  }
+
+  .sidebar.ul {
+    list-style: none;
+  }
+  .container-messages {
+    width: auto;
+  }
+ }
+
+ .container-messages {
+  ul {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  ul.container {
+    li {
+      list-style: none;
+    }
+  }
+ }
+
+
+
 
 

@@ -1,29 +1,31 @@
-%nav
+%nav.border-bottom
   .container
     %a.navbar-brand.fw-bold.fs-4 Profile
     %ul.nav.justify-content-center
       %li.nav-item
         %a=link_to 'Matches', dashboard_path, class: 'text-decoration-none mx-2'
       %li.nav-item
-        %a= link_to 'Messages', conversation_path(@conversations.first)
+        %a= link_to 'Messages', conversation_path(@conversations.first), class: 'text-decoration-none'
         %span.badge.text-bg-secondary= current_user.unread
       %li.nav-item
         %a= link_to 'New Schedule', new_schedule_path, class: 'text-decoration-none mx-2'
       %li.nav-item
         %a= link_to 'Schedules', schedules_path, class: 'text-decoration-none'
 .conversations
-  %H4.m-1 Messaging
-  %ul
-    - @conversations.each do |conversation|
-      %li{class: conversation == @conversation ? 'active' : ''}
-        = link_to conversation.name(current_user), conversation_path(conversation)
-.messages
-  %ul
-    - @conversation.messages.each do |message|
-      %li
-        %p= message.content
-        %p= message.created_at.to_formatted_s(:long)
+  .sidebar.border-end{style: "width:25%"}
+    %H4.m-1 Messaging
+    %ul.list-group
+      - @conversations.each do |conversation|
+        %li.list-group-item{class: conversation == @conversation ? 'active' : ''}
+          = link_to conversation.name(current_user), conversation_path(conversation), class: 'text-decoration-none'
   %div
-    = form_for [@conversation, @message] do |f|
-      = f.text_field :content
-      = f.submit
+  .container-messages.w-100
+    %ul.container
+      - @conversation.messages.each do |message|
+        %li
+          %p.fs-5= message.content
+          %p.fw-lighter= message.created_at.to_formatted_s(:long)
+    %div.container.darker
+      = form_for [@conversation, @message] do |f|
+        = f.text_field :content
+        = f.submit
