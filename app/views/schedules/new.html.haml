@@ -18,11 +18,12 @@
       - @schedule.errors.each do |error|
         %li= error.full_message
 
-= form_for @schedule do |f|
-  = f.label :availability
-  = f.date_field :availability
-  = f.label :location
-  = f.text_field :location
-  = f.label :gender
-  = f.text_field :gender
-  = f.submit
+.form-group
+  = form_for @schedule do |f|
+    %p.mb-1= f.label :availability
+    = f.date_field :availability
+    %p.mb-1= f.label :location
+    = f.text_field :location
+    %p.mb-1= f.label :gender
+    = f.text_field :gender
+    %p.mt-5= f.submit 
