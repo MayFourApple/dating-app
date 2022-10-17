@@ -12,11 +12,11 @@
         %a= link_to 'Schedules', schedules_path, class: 'text-decoration-none'   
 
 - if @schedule.errors.any?
-  #error_explanation
-    %p #{pluralize(@schedule.errors.count, 'error')} prohibited this article from being saved:
+  #error-explanation
+    %p.text-danger #{pluralize(@schedule.errors.count, 'error')} prohibited this article from being saved:
     %ul
       - @schedule.errors.each do |error|
-        %li= error.full_message
+        %li.text-danger.fst-italic= error.full_message
 
 .form-group
   = form_for @schedule do |f|

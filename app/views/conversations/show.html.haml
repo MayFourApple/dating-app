@@ -11,7 +11,7 @@
         %a= link_to 'New Schedule', new_schedule_path, class: 'text-decoration-none mx-2'
       %li.nav-item
         %a= link_to 'Schedules', schedules_path, class: 'text-decoration-none'
-.conversations
+.conversations.h-100.scrollspy-example.bg-light.p-3.rounded-2{"data-bs-root-margin" => "0px 0px -40%", "data-bs-smooth-scroll" => "true", "data-bs-spy" => "scroll", "data-bs-target" => "#navbar-example2", tabindex: "0"}
   .sidebar.border-end{style: "width:25%"}
     %H4.m-1 Messaging
     %ul.list-group
@@ -19,13 +19,14 @@
         %li.list-group-item{class: conversation == @conversation ? 'active' : ''}
           = link_to conversation.name(current_user), conversation_path(conversation), class: 'text-decoration-none'
   %div
-  .container-messages.w-100
+  .container-messages.d-block.w-100.h-80
     %ul.container
       - @conversation.messages.each do |message|
         %li{class: message.author == current_user ? 'self' : 'other'}
           %p.fs-5= message.content
           %p.fw-lighter= message.created_at.to_formatted_s(:long)
-    %div.container.darker
-      = form_for [@conversation, @message] do |f|
-        = f.text_field :content
-        = f.submit
+    %div.container
+      .form-control.bottomleft
+        = form_for [@conversation, @message] do |f|
+          %span= f.text_field :content
+          %span= f.submit
