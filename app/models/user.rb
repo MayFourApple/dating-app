@@ -5,7 +5,7 @@ class User < ApplicationRecord
   #        :recoverable, :rememberable, :validatable,
   devise :omniauthable, omniauth_providers: %i[linkedin]
   
-  has_many :schedules
+  has_many :schedules, dependent: :destroy
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -30,6 +30,7 @@ class User < ApplicationRecord
       .joins('INNER JOIN schedules self_schedules ON self_schedules.availability = other_schedules.availability AND self_schedules.location = other_schedules.location AND self_schedules.user_id <> other_schedules.user_id')
       .order('other_schedules.availability, other_schedules.location')
       .where.not('other_schedules.user_id': id)
+      .where('self_schedules.user_id': id)
       .where('other_schedules.gender': gender)
       .where('other_schedules.availability >= ?', Date.today)
       .where('NOT EXISTS(SELECT 1 FROM removed_matches WHERE removed_matches.schedule_1_id = self_schedules.id AND removed_matches.schedule_2_id = other_schedules.id)')

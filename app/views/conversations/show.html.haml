@@ -22,7 +22,7 @@
   .container-messages.w-100
     %ul.container
       - @conversation.messages.each do |message|
-        %li
+        %li{class: message.author == current_user ? 'self' : 'other'}
           %p.fs-5= message.content
           %p.fw-lighter= message.created_at.to_formatted_s(:long)
     %div.container.darker
